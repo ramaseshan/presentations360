@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+
+{% include 'head.html'%}
+
+<body class="{{ SITEURL }} lighten-5">
+	{% include 'header.html'%}
+
+  <div id="page-wrap">
+      <div id="main-content">
+          <div id="guts">
+              <div class="container">
+                  <div class="wrapper">
+                    {% block content %}
+                    {% endblock %}
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <a class="darken-2 scrollToTop btn-floating btn-large waves-effect waves-light {{ SITECSS }}"><i class="mdi-hardware-keyboard-arrow-up"></i></a>
+
+    {% include 'footer.html'%}   
+</body>
+</html>

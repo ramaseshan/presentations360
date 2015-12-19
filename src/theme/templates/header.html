@@ -1,0 +1,17 @@
+<header class="site-header">
+    <div class="navbar-fixed">
+        <nav class="{{ SITECSS }} darken-2 waves-effect waves-light">
+            <div class="nav-wrapper">
+               <div class="container">
+                <a internal href="{{ SITEURL }}/" class="brand-logo"><i class="fa fa-align-justify"></i> {{SITENAME}}</a>
+                <ul id="nav-mobile" class="right side-nav">
+                  {% for title, link in MENUITEMS %}
+                      <li><a href="{{ link }}">{{ title }}</a></li>
+                  {% endfor %}
+                </ul>
+                <a class="button-collapse" href="#" data-activates="nav-mobile">Menu</a>
+            </div>
+            </div>
+        </nav>
+    </div>
+</header>

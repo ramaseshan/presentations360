@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="content">
+
+<div>
+    <div id="skrollr-body">
+        <div id="non-skrollr">
+            <div class="row">
+                	{% for article in articles_page.object_list %}
+                <div class="col s12 m6 l6">
+                  <div class="card hoverable cyan darken-4">
+                    <div class="card-content white-text">
+                      <span class="card-title"><p class="flow-text">{{article.title}}</p></span>
+                      <p>
+                          {{article.summary}}
+                      </p>
+                    </div>
+                    <div class="card-action">
+                      <div class="valign-wrapper">
+                        <a class="valign" href="{{article.slug}}.html">View Presentation</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% if articles_page.has_other_pages() %}
+    {% include 'pagination.html' %}
+{% endif %}
+
+</section><!-- /#content -->
+
+{% endblock content %}

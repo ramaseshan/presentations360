@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = u'Libre Hackers Space'
+AUTHOR = u'Libre Hacktivists Space'
 SITENAME = u'Presentations360'
 SITEURL = ''
 
@@ -25,6 +25,9 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
          ('Jinja2', 'http://jinja.pocoo.org/'),
          ('You can modify those links in your config file', '#'),)
 
+MENUITEMS = (('Pelican', 'http://getpelican.com/'),
+         ('Python.org', 'http://python.org/'),
+         ('Jinja2', 'http://jinja.pocoo.org/'),)
 # Social widget
 SOCIAL = (('You can add links in your config file', '#'),
           ('Another social link', '#'),)
@@ -33,3 +36,10 @@ DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
+
+THEME = 'theme'
+
+# Site Definations
+SITECSS = "cyan lighten-1"
+PHONENUMBER = '99999999999'
+Mobile = '9999999'

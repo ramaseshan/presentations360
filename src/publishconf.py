@@ -22,3 +22,8 @@ DELETE_OUTPUT_DIRECTORY = True
 
 #DISQUS_SITENAME = ""
 #GOOGLE_ANALYTICS = ""
+FACEBOOK = "test"
+#TWITTER = ""
+# GITHUB = ""
+# GITLAB = ""
+DESCRIPTION = "Write about me"

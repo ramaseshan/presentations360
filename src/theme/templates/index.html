@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "default/default_base.html" %}
 {% block content %}
 <section id="content">
 
@@ -30,7 +30,7 @@
 
 
 {% if articles_page.has_other_pages() %}
-    {% include 'pagination.html' %}
+    {% include 'default/pagination.html' %}
 {% endif %}
 
 </section><!-- /#content -->

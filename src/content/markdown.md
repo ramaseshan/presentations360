@@ -24,7 +24,7 @@ Transition: concave
 
     ## For whom the sessions are:
 
-    *   Thirst for knowledge heent" data-fragment-index="1" -->
+    *   Thirst for knowledge <!-- .element: class="fragment" " data-fragment-index="1" -->
     *   Creative Potential <!-- .element: class="fragment" data-fragment-index="2" -->
     *   Community Building <!-- .element: class="fragment" data-fragment-index="3" -->
 

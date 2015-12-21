@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-  {% include 'revealjs/head.html' %}
+  {% include 'lib/revealjs/head.html' %}
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
 			if( window.location.search.match( /print-pdf/gi ) ) {
@@ -28,15 +28,15 @@
 		<div class="reveal">
 			<div class="slides">
 				<!-- Slides are separated by newline + 4 = + newline, vertical slides identical but 4 - and Notes are mentioned as Note: + newline -->
-        {% include 'generics/reveal/'+article.intro+'.html' %}
+        {% include 'intro/'+article.intro+'.html' %}
 				<section data-markdown data-separator="^\n====\n$" data-separator-vertical="^\n----\n$" data-notes="^\nNote:\n$">
           {% block content %}
           {% endblock %}
 				</section>
-				{% include 'generics/reveal/'+article.contact+'.html' %}
+				{% include 'contact/'+article.contact+'.html' %}
 			</div>
 		</div>
-    {% include 'revealjs/reveal_scripts.html' %}
+    {% include 'lib/revealjs/reveal_scripts.html' %}
 		<!-- Custom Scripts include after this -->
 	</body>
 </html>

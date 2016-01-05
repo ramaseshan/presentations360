@@ -14,8 +14,6 @@ Contact: contact
 Transition: concave
 ---
 
-    ====
-
     ### Banking Concept of Education
 
     ![Banking Concept of Education](theme/img/freesoftware/banking_concept.png)
@@ -231,8 +229,3 @@ Transition: concave
     ![](theme/img/freesoftware/swift.jpg) <!-- .element: style="width: 22%; float: left; margin-right: 10px; height: 180px" -->
     ![](theme/img/freesoftware/efd.jpg) <!-- .element: style="width: 22%; float: left; margin-right: 10px;" -->
 
-    ====
-
-    # FSFTN and Flood Relief Campaign
-
-    ====

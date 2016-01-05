@@ -15,7 +15,7 @@ Transition: concave
 ---
 
 	Python - An Introduction <br/>
-    	![Python Logo](/theme/img/python/python.png)
+    	![Python Logo](theme/img/python/python.png)
 
 
 	====
@@ -58,7 +58,7 @@ Transition: concave
 
 	* Guido van Rossum  <!-- .element: class="fragment" data-fragment-index="1" -->
 	* Father of Python  <!-- .element: class="fragment" data-fragment-index="3" -->
-    	![Guido Van Rossum](/theme/img/python/guido.png) <!-- .element: class="fragment" data-fragment-index="2" --> 
+    	![Guido Van Rossum](theme/img/python/guido.png) <!-- .element: class="fragment" data-fragment-index="2" --> 
 	* 1991 <!-- .element: class="fragment" data-fragment-index="4" -->
 
 

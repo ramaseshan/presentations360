@@ -5,12 +5,10 @@
             <div class="col l3 m6 s12">
                 <h5 class="white-text">social-links</h5>
                 <ul>
-                    <li><a class="grey-text text-lighten-3" href="http://facebook.com/{{FACEBOOK}}" target="_blank"><i class="mdi-social-person-add"></i> Facebook</a>
+                  {% for title, link in SOCIAL %}
+                    <li><a class="grey-text text-lighten-3" href="{{link}}" target="_blank"><i class="mdi-social-person-add"></i> title </a>
                     </li>
-                    <li><a class="grey-text text-lighten-3" href="http://facebook.com/{{FACEBOOK}}" target="_blank"><i class="mdi-social-person-add"></i> Facebook</a>
-                    </li>
-                    <li><a class="grey-text text-lighten-3" href="http://facebook.com/{{FACEBOOK}}" target="_blank"><i class="mdi-social-person-add"></i> Facebook</a>
-                    </li>
+                  {% endfor %}
                 </ul>
             </div>
 
@@ -23,8 +21,7 @@
                 <h5 class="white-text">Contact</h5>
                 <ul>
                     <li>{{PHONENUMBER}}</li>
-                    <li>{{Mobile}}
-                    </li>
+                    <li><a href="http://voidspace.xyz/about/2015/01/15/about-me/"> Contact Page </li>
                 </ul>
             </div>
 

@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Thinking like a Computer Scientist</title>
+
+  <meta name="description" content="<p>Introduction to Problem Solving</p>">
+  <meta name="author" content="[<Author u'Ramaseshan'>]">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+    <!-- CSS Includes -->
+    <link rel="stylesheet" href="/theme/revealjs/css/reveal.css">
+    <link rel="stylesheet" href="/theme/revealjs/css/theme/simple.css" id="theme">
+
+    <!-- JS includes -->
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="/theme/revealjs/lib/css/zenburn.css">
+
+    <script type="text/javascript" src="/theme/js/jquery.min.js"></script>
+    <script src="/theme/revealjs/lib/js/head.min.js"></script>
+    <script src="/theme/revealjs/js/reveal.js"></script>
+</head>		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '/theme/revealjs/css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<style>
+			.reveal img {
+				width: 800;
+				height: 550;
+			}
+		</style>
+		<div class="reveal">
+			<div class="slides">
+				<!-- Slides are separated by newline + 4 = + newline, vertical slides identical but 4 - and Notes are mentioned as Note: + newline -->
+<section data-markdown data-separator="^\n====\n$" data-separator-vertical="^\n----\n$" data-notes="^\nNote:\n$">
+    ## Thinking like a Computer Scientist
+    
+    ----
+    
+    ## Ramaseshan
+    
+    ### DevOps and Storage Engineer
+    ### Fractalio Data Pvt Ltd
+    ### Magadi, Karnataka
+</section>				<section data-markdown data-separator="^\n====\n$" data-separator-vertical="^\n----\n$" data-notes="^\nNote:\n$">
+
+<div class="highlight"><pre>What can a Computer Sove ?
+
+====
+
+Lets Solve some problems ...!
+
+====
+
+** The Fizz Buzz Problem. **
+
+&gt; Write a program that prints the numbers from 1 to 100. But for multiples of three print “Fizz” instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”.
+
+====
+
+** Water Tank Problem **
+
+&gt; Write a robot that will fill the watertank whenever it is empty.
+
+====
+
+** What does any program basically do ? **
+
+- Input &lt;!-- .element: class=&quot;fragment&quot; &quot; data-fragment-index=&quot;1&quot; --&gt;
+- Output &lt;!-- .element: class=&quot;fragment&quot; &quot; data-fragment-index=&quot;2&quot; --&gt; 
+- Control Flow &lt;!-- .element: class=&quot;fragment&quot; &quot; data-fragment-index=&quot;3&quot; --&gt;
+- Repetation &lt;!-- .element: class=&quot;fragment&quot; &quot; data-fragment-index=&quot;4&quot; --&gt;
+- Data Manipulation &lt;!-- .element: class=&quot;fragment&quot; &quot; data-fragment-index=&quot;5&quot; --&gt;
+
+====
+
+** Before Coding ? **
+
+- Thinking of a solution before coding. &lt;!-- .element: class=&quot;fragment&quot; &quot; data-fragment-index=&quot;1&quot; --&gt;
+- Logic     &lt;!-- .element: class=&quot;fragment&quot; &quot; data-fragment-index=&quot;2&quot; --&gt;
+- Write psuedo code &lt;!-- .element: class=&quot;fragment&quot; &quot; data-fragment-index=&quot;3&quot; --&gt;
+- Execute the psuedo code   &lt;!-- .element: class=&quot;fragment&quot; &quot; data-fragment-index=&quot;4&quot; --&gt;
+- Validate all conditions. (Example : while loops and for loops.)   &lt;!-- .element: class=&quot;fragment&quot; &quot; data-fragment-index=&quot;5&quot; --&gt;
+- Now write code in the computer. &lt;!-- .element: class=&quot;fragment&quot; &quot; data-fragment-index=&quot;6&quot; --&gt;
+
+====
+
+** Errors and Debugging **
+
+Programming is error-prone.
+- Syntax errors
+- Runtime errors
+- Semantic errors
+- Experimental debugging
+
+====
+
+** Optimization **
+
+====
+
+** Readibility / Comments **
+
+a = 4 # Declaring value of a to 4  &lt;!-- .element: class=&quot;fragment&quot; &quot; data-fragment-index=&quot;1&quot; --&gt;
+
+car_no_of_wheels = 4 # No of wheels of a car  &lt;!-- .element: class=&quot;fragment&quot; &quot; data-fragment-index=&quot;2&quot; --&gt;
+
+====
+
+As a college student,  what can programming solve for me ?
+
+What can I do with programming ?
+</pre></div>
+
+				</section>
+<section data-markdown data-separator="^\n====\n$" data-separator-vertical="^\n----\n$" data-notes="^\nNote:\n$">
+    # AKA - Ask Me Anything
+   
+    ----
+ 
+    ### Reach me at
+    - null@voidspace.xyz
+    - twitter - @voidspacexyz
+    - telegram - @voidspace_xyz
+    
+    ----
+    
+    # Thank You
+</section>			</div>
+		</div>
+<script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    slideNumber: true,
+
+    theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+    transition: "concave", // default/cube/page/concave/zoom/linear/fade/none
+    /*
+    multiplex: {
+            // Example values. To generate your own, see the socket.io server instructions.
+            secret: null, // null so the clients do not have control of the master presentation
+            id: '1ea875674b17ca76', // id, obtained from socket.io server
+            url: 'revealjs.jit.su:80' // Location of socket.io server
+    },
+    */
+    // Optional libraries used to extend on reveal.js
+    dependencies: [
+      { src: '/theme/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: '/theme/revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '/theme/revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '/theme/revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: '/theme/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: '/theme/revealjs/plugin/notes/notes.js', async: true },
+      //{ src: '/theme/revealjs/plugin/menu/menu.js', async: true },
+      //{ src: '//cdn.socket.io/socket.io-1.3.5.js', async: true },
+          //{ src: '/theme/revealjs/plugin/multiplex/client.js', async: true },
+      ],
+  /*menu: {
+          // Specifies which side of the presentation the menu will
+          // be shown. Use 'left' or 'right'.
+          side: 'left',
+
+          // Add slide numbers to the titles in the slide list.
+          // Use 'true' or format string (same as reveal.js slide numbers)
+          numbers: true,
+
+          // Hide slides from the menu that do not have a title.
+          // Set to 'true' to only list slides with titles.
+          hideMissingTitles: false,
+
+          // Add markers to the slide titles to indicate the
+          // progress through the presentation
+          markers: false,
+
+          // Specify custom panels to be included in the menu, by
+          // providing an array of objects with 'title', 'icon'
+          // properties, and either a 'src' or 'content' property.
+          custom: false,
+
+          // Specifies the themes that will be available in the themes
+          // menu panel. Set to 'false' to hide themes panel.
+          themes: [
+              { name: 'Black', theme: '/theme/revealjs/css/theme/black.css' },
+              { name: 'White', theme: '/theme/revealjs/css/theme/white.css' },
+              { name: 'League', theme: '/theme/revealjs/css/theme/league.css' },
+              { name: 'Sky', theme: '/theme/revealjs/css/theme/sky.css' },
+              { name: 'Beige', theme: '/theme/revealjs/css/theme/beige.css' },
+              { name: 'Simple', theme: '/theme/revealjs/css/theme/simple.css' },
+              { name: 'Serif', theme: '/theme/revealjs/css/theme/serif.css' },
+              { name: 'Blood', theme: '/theme/revealjs/css/theme/blood.css' },
+              { name: 'Night', theme: '/theme/revealjs/css/theme/night.css' },
+              { name: 'Moon', theme: '/theme/revealjs/css/theme/moon.css' },
+              { name: 'Solarized', theme: '/theme/revealjs/css/theme/solarized.css' }
+          ],
+
+          // Specifies if the transitions menu panel will be shown.
+          transitions: false,
+
+          // Adds a menu button to the slides to open the menu panel.
+          // Set to 'false' to hide the button.
+          openButton: true,
+
+          // If 'true' allows the slide number in the presentation to
+          // open the menu panel. The reveal.js slideNumber option must
+          // be displayed for this to take effect
+          openSlideNumber: false,
+
+          // If true allows the user to open and navigate the menu using
+          // the keyboard. Standard keyboard interaction with reveal
+          // will be disabled while the menu is open.
+          keyboard: true
+      },
+      */
+  });
+</script>		<!-- Custom Scripts include after this -->
+	</body>
+</html>

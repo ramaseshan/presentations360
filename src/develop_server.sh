@@ -6,10 +6,18 @@ PY=${PY:-python}
 PELICAN=${PELICAN:-pelican}
 PELICANOPTS=
 
-BASEDIR=$(pwd)
-INPUTDIR=$BASEDIR/content
-OUTPUTDIR=$BASEDIR/output
-CONFFILE=$BASEDIR/pelicanconf.py
+branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+if [ $branch = "gh-pages" ]; then
+	BASEDIR=$(pwd)
+	INPUTDIR=$BASEDIR/content
+	OUTPUTDIR=$BASEDIR/output
+	CONFFILE=$BASEDIR/pelicanconf.py
+else
+	BASEDIR=$(pwd)
+	INPUTDIR=$BASEDIR/content
+	OUTPUTDIR=$BASEDIR/output
+	CONFFILE=$BASEDIR/pelicanconf.py
+fi;
 
 ###
 # Don't change stuff below here unless you are sure

@@ -14,25 +14,27 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+  <link href="http://voidspace.xyz/presentations360/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Presentations360 Full Atom Feed" />
+  <link href="http://voidspace.xyz/presentations360/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="Presentations360 Categories Atom Feed" />
 
     <!-- CSS Includes -->
-    <link rel="stylesheet" href="/theme/revealjs/css/reveal.css">
-    <link rel="stylesheet" href="/theme/revealjs/css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="http://voidspace.xyz/presentations360/theme/revealjs/css/reveal.css">
+    <link rel="stylesheet" href="http://voidspace.xyz/presentations360/theme/revealjs/css/theme/simple.css" id="theme">
 
     <!-- JS includes -->
     <!-- For syntax highlighting -->
-    <link rel="stylesheet" href="/theme/revealjs/lib/css/zenburn.css">
+    <link rel="stylesheet" href="http://voidspace.xyz/presentations360/theme/revealjs/lib/css/zenburn.css">
 
-    <script type="text/javascript" src="/theme/js/jquery.min.js"></script>
-    <script src="/theme/revealjs/lib/js/head.min.js"></script>
-    <script src="/theme/revealjs/js/reveal.js"></script>
+    <script type="text/javascript" src="http://voidspace.xyz/presentations360/theme/js/jquery.min.js"></script>
+    <script src="http://voidspace.xyz/presentations360/theme/revealjs/lib/js/head.min.js"></script>
+    <script src="http://voidspace.xyz/presentations360/theme/revealjs/js/reveal.js"></script>
 </head>		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
 			if( window.location.search.match( /print-pdf/gi ) ) {
 				var link = document.createElement( 'link' );
 				link.rel = 'stylesheet';
 				link.type = 'text/css';
-				link.href = '/theme/revealjs/css/print/pdf.css';
+				link.href = 'http://voidspace.xyz/presentations360/theme/revealjs/css/print/pdf.css';
 				document.getElementsByTagName( 'head' )[0].appendChild( link );
 			}
 		</script>
@@ -328,15 +330,15 @@
     */
     // Optional libraries used to extend on reveal.js
     dependencies: [
-      { src: '/theme/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-      { src: '/theme/revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-      { src: '/theme/revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-      { src: '/theme/revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-      { src: '/theme/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-      { src: '/theme/revealjs/plugin/notes/notes.js', async: true },
-      //{ src: '/theme/revealjs/plugin/menu/menu.js', async: true },
+      { src: 'http://voidspace.xyz/presentations360/theme/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/notes/notes.js', async: true },
+      //{ src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/menu/menu.js', async: true },
       //{ src: '//cdn.socket.io/socket.io-1.3.5.js', async: true },
-          //{ src: '/theme/revealjs/plugin/multiplex/client.js', async: true },
+          //{ src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/multiplex/client.js', async: true },
       ],
   /*menu: {
           // Specifies which side of the presentation the menu will
@@ -363,17 +365,17 @@
           // Specifies the themes that will be available in the themes
           // menu panel. Set to 'false' to hide themes panel.
           themes: [
-              { name: 'Black', theme: '/theme/revealjs/css/theme/black.css' },
-              { name: 'White', theme: '/theme/revealjs/css/theme/white.css' },
-              { name: 'League', theme: '/theme/revealjs/css/theme/league.css' },
-              { name: 'Sky', theme: '/theme/revealjs/css/theme/sky.css' },
-              { name: 'Beige', theme: '/theme/revealjs/css/theme/beige.css' },
-              { name: 'Simple', theme: '/theme/revealjs/css/theme/simple.css' },
-              { name: 'Serif', theme: '/theme/revealjs/css/theme/serif.css' },
-              { name: 'Blood', theme: '/theme/revealjs/css/theme/blood.css' },
-              { name: 'Night', theme: '/theme/revealjs/css/theme/night.css' },
-              { name: 'Moon', theme: '/theme/revealjs/css/theme/moon.css' },
-              { name: 'Solarized', theme: '/theme/revealjs/css/theme/solarized.css' }
+              { name: 'Black', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/black.css' },
+              { name: 'White', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/white.css' },
+              { name: 'League', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/league.css' },
+              { name: 'Sky', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/sky.css' },
+              { name: 'Beige', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/beige.css' },
+              { name: 'Simple', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/simple.css' },
+              { name: 'Serif', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/serif.css' },
+              { name: 'Blood', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/blood.css' },
+              { name: 'Night', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/night.css' },
+              { name: 'Moon', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/moon.css' },
+              { name: 'Solarized', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/solarized.css' }
           ],
 
           // Specifies if the transitions menu panel will be shown.

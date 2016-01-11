@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = u'Libre Hacktivists Space'
+AUTHOR = u'voidspace'
 SITENAME = u'Presentations360'
 SITEURL = ''
 
@@ -25,12 +25,13 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
          ('Jinja2', 'http://jinja.pocoo.org/'),
          ('You can modify those links in your config file', '#'),)
 
-MENUITEMS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),)
+MENUITEMS = (('Blog', 'http://voidspace.xyz/'),
+         ('Contact', 'http://voidspace.xyz/about/2015/01/15/about-me/'),
+         ('GitLab', 'https://gitlab.com/voidspacexyz'),
+         ('Github', 'https://github.com/ramaseshan'),)
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (('twitter', 'https://twitter.com/voidspacexyz'),
+          ('Diaspora', 'https://diasp.in/i/95a3c3c43c8d'),)
 
 DEFAULT_PAGINATION = 10
 
@@ -41,5 +42,5 @@ THEME = 'theme'
 
 # Site Definations
 SITECSS = "cyan lighten-1"
-PHONENUMBER = '99999999999'
-Mobile = '9999999'
+PHONENUMBER = 'null@voidspace.xyz'
+#Mobile = '9999999'

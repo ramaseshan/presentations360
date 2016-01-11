@@ -15,4 +15,5 @@ A better way to manage and build web presentations.
 9. cd src
 10. pelican -o ../ (Doing this because the index.html and other html files will come in the root directory.)
 11. cd ../
-12. firefox index.html 
+12. python -m SimpleHTTPServer 8080
+13. Open http://127.0.0.1:8080 in your browser

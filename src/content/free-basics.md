@@ -15,8 +15,8 @@ Transition: concave
 ---
 
     How many of you want me to talk now ?
-       - a. Me
-       - b. Me
+       * a. Me  <!-- .element: class="fragment" " data-fragment-index="1" -->
+       * b. Me  <!-- .element: class="fragment" " data-fragment-index="2" -->
     
     ====
     

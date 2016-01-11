@@ -14,11 +14,9 @@ Contact: contact
 Transition: concave
 ---
 
-    ====
-
     ### Banking Concept of Education
 
-    ![Banking Concept of Education](/theme/img/freesoftware/banking_concept.png)
+    ![Banking Concept of Education](theme/img/freesoftware/banking_concept.png)
 
     ----
 
@@ -51,15 +49,15 @@ Transition: concave
 
     ----
 
-    ![Grinder Mixie](/theme/img/freesoftware/grinder.jpg) <!-- .element: style="width: 26%;" class="fragment" data-fragment-index="1" -->
-    ![Free Laptop](/theme/img/freesoftware/laptop.jpg) <!-- .element style="width: 37%; height: 252px;" class="fragment" data-fragment-index="2"-->
+    ![Grinder Mixie](theme/img/freesoftware/grinder.jpg) <!-- .element: style="width: 26%;" class="fragment" data-fragment-index="1" -->
+    ![Free Laptop](theme/img/freesoftware/laptop.jpg) <!-- .element style="width: 37%; height: 252px;" class="fragment" data-fragment-index="2"-->
 
-    ![Fan](/theme/img/freesoftware/fan.jpg) <!-- .element: style="width: 26%;" class="fragment" data-fragment-index="3" -->
-    ![BaliAadu](/theme/img/freesoftware/goat-Berari.preview.jpg)  <!-- .element style="width: 37%;" class="fragment" data-fragment-index="4"-->
+    ![Fan](theme/img/freesoftware/fan.jpg) <!-- .element: style="width: 26%;" class="fragment" data-fragment-index="3" -->
+    ![BaliAadu](theme/img/freesoftware/goat-Berari.preview.jpg)  <!-- .element style="width: 37%;" class="fragment" data-fragment-index="4"-->
 
     ----
 
-    ![Free Coffee](/theme/img/freesoftware/freeasincoffee.png) <!-- .element: style="width: 80%" -->
+    ![Free Coffee](theme/img/freesoftware/freeasincoffee.png) <!-- .element: style="width: 80%" -->
 
     ----
 
@@ -73,23 +71,23 @@ Transition: concave
 
     ----
 
-    ![Freedom 0](/theme/img/freesoftware/freedom0.png) <!-- .element: style="width: 80%" -->
+    ![Freedom 0](theme/img/freesoftware/freedom0.png) <!-- .element: style="width: 80%" -->
 
     ----
 
-    ![Freedom1 1](/theme/img/freesoftware/freedom1.png) <!-- .element: style="width: 80%" -->
+    ![Freedom1 1](theme/img/freesoftware/freedom1.png) <!-- .element: style="width: 80%" -->
 
     ----
 
-    ![Freedom 2](/theme/img/freesoftware/freedom2.png) <!-- .element: style="width: 80%" -->
+    ![Freedom 2](theme/img/freesoftware/freedom2.png) <!-- .element: style="width: 80%" -->
 
     ----
 
-    ![Freedom 3](/theme/img/freesoftware/freedom3.png) <!-- .element: style="width: 80%" -->
+    ![Freedom 3](theme/img/freesoftware/freedom3.png) <!-- .element: style="width: 80%" -->
 
     ====
 
-    ![Richard Stallman](/theme/img/freesoftware/richard_stallman.jpg) <!-- .element: style="width: 80%" -->
+    ![Richard Stallman](theme/img/freesoftware/richard_stallman.jpg) <!-- .element: style="width: 80%" -->
 
     ----
 
@@ -97,13 +95,13 @@ Transition: concave
 
     ----
 
-    ![Linux Torvalds](/theme/img/freesoftware/LinusTorvalds.jpg) <!-- .element: style="width: 80%" -->
+    ![Linux Torvalds](theme/img/freesoftware/LinusTorvalds.jpg) <!-- .element: style="width: 80%" -->
 
     ----
 
     # GNU/Linux
 
-    ![GNU/Linux](/theme/img/freesoftware/gnu_linux.png) <!-- .element: style="width: 80%" -->
+    ![GNU/Linux](theme/img/freesoftware/gnu_linux.png) <!-- .element: style="width: 80%" -->
 
     ====
 
@@ -113,10 +111,10 @@ Transition: concave
 
     ----
 
-    ![IBM](/theme/img/freesoftware/ibm.jpg) <!-- .element: style="width: 35%; height: 208px;" -->
-    ![ISS](/theme/img/freesoftware/iss.jpg) <!-- .element: style="width: 35%;" -->
-    ![GermanUniversity](/theme/img/freesoftware/GermanUniversity.jpg) <!-- .element:style="width:35%"-->
-    ![Nasa](/theme/img/freesoftware/nassa.png) <!-- .element: style="width: 35%;"-->
+    ![IBM](theme/img/freesoftware/ibm.jpg) <!-- .element: style="width: 35%; height: 208px;" -->
+    ![ISS](theme/img/freesoftware/iss.jpg) <!-- .element: style="width: 35%;" -->
+    ![GermanUniversity](theme/img/freesoftware/GermanUniversity.jpg) <!-- .element:style="width:35%"-->
+    ![Nasa](theme/img/freesoftware/nassa.png) <!-- .element: style="width: 35%;"-->
 
     ====
 
@@ -124,7 +122,7 @@ Transition: concave
 
     ----
 
-    ![IBM](/theme/img/freesoftware/dhanush.png)
+    ![IBM](theme/img/freesoftware/dhanush.png)
 
     ## யாராச்சும் இருகீங்களா???
 
@@ -132,15 +130,15 @@ Transition: concave
 
     ----
 
-    ![Software Libre](/theme/img/freesoftware/softwarelibre.png)
+    ![Software Libre](theme/img/freesoftware/softwarelibre.png)
 
-    ![VLC](/theme/img/freesoftware/vlc.png) <!-- .element: style="width: 15%"-->
-    ![Firefox](/theme/img/freesoftware/firefox.png)  <!-- .element: style="width: 16%"-->
-    ![VirtualBox](/theme/img/freesoftware/Virtualbox_logo.png) <!-- .element: style="width: 15%"-->
+    ![VLC](theme/img/freesoftware/vlc.png) <!-- .element: style="width: 15%"-->
+    ![Firefox](theme/img/freesoftware/firefox.png)  <!-- .element: style="width: 16%"-->
+    ![VirtualBox](theme/img/freesoftware/Virtualbox_logo.png) <!-- .element: style="width: 15%"-->
 
-    ![Fedora](/theme/img/freesoftware/FedoraLogo2.png)  <!-- .element: style="width: 25%"-->
-    ![Debian](/theme/img/freesoftware/debian.gif) <!-- .element: style="width: 28%"-->
-    ![Mint ](/theme/img/freesoftware/mint.png)  <!-- .element: style="width: 20%" -->
+    ![Fedora](theme/img/freesoftware/FedoraLogo2.png)  <!-- .element: style="width: 25%"-->
+    ![Debian](theme/img/freesoftware/debian.gif) <!-- .element: style="width: 28%"-->
+    ![Mint ](theme/img/freesoftware/mint.png)  <!-- .element: style="width: 20%" -->
 
     ====
 
@@ -155,7 +153,7 @@ Transition: concave
 
     ----
 
-    ![Creative Commons](/theme/img/freesoftware/cc.png)
+    ![Creative Commons](theme/img/freesoftware/cc.png)
 
     ----
 
@@ -172,17 +170,17 @@ Transition: concave
     ----
 
     ## Patents
-   ![Patents](/theme/img/freesoftware/patent.png)  <!-- .element: style="width: 80%;" -->
+   ![Patents](theme/img/freesoftware/patent.png)  <!-- .element: style="width: 80%;" -->
 
     ----
 
     ## Open Access
-    ![Open Access](/theme/img/freesoftware/openacess.png)  <!-- .element: style="width: 40%; float: left" -->
-    ![Aaron_Swartz](/theme/img/freesoftware/Aaron_Swartz.jpg)  <!-- .element: style="width: 50%; float: right" -->
+    ![Open Access](theme/img/freesoftware/openacess.png)  <!-- .element: style="width: 40%; float: left" -->
+    ![Aaron_Swartz](theme/img/freesoftware/Aaron_Swartz.jpg)  <!-- .element: style="width: 50%; float: right" -->
 
     ----
 
-    ![PLOS](/theme/img/freesoftware/PLOS.png)  <!-- .element: style="width: 40%; float: left" -->
+    ![PLOS](theme/img/freesoftware/PLOS.png)  <!-- .element: style="width: 40%; float: left" -->
 
     ====
 
@@ -212,27 +210,22 @@ Transition: concave
 
     ## Workshops
 
-    ![](/theme/img/freesoftware/sc13.png) <!-- .element: style="width: 30%; float: left; margin-right: 10px;" -->
-    ![](/theme/img/freesoftware/sc15.jpg)  <!-- .element: style="width: 30%; float: left; margin-right: 10px;" -->
-    ![](/theme/img/freesoftware/alagappa.jpg) <!-- .element: style="width: 30%; float: left; margin-right: 10px;" -->
+    ![](theme/img/freesoftware/sc13.png) <!-- .element: style="width: 30%; float: left; margin-right: 10px;" -->
+    ![](theme/img/freesoftware/sc15.jpg)  <!-- .element: style="width: 30%; float: left; margin-right: 10px;" -->
+    ![](theme/img/freesoftware/alagappa.jpg) <!-- .element: style="width: 30%; float: left; margin-right: 10px;" -->
 
     ----
 
     ## Public outreach programs
 
-    ![](/theme/img/freesoftware/mnm.jpg) <!-- .element: style="width: 30%; float: left; margin-right: 10px;" -->
-    ![](/theme/img/freesoftware/12.jpg) <!-- .element: style="width: 30%; float: left; margin-right: 10px;" -->
-    ![](/theme/img/freesoftware/sfd.png) <!-- .element: style="width: 30%; float: left; margin-right: 10px;" -->
+    ![](theme/img/freesoftware/mnm.jpg) <!-- .element: style="width: 30%; float: left; margin-right: 10px;" -->
+    ![](theme/img/freesoftware/12.jpg) <!-- .element: style="width: 30%; float: left; margin-right: 10px;" -->
+    ![](theme/img/freesoftware/sfd.png) <!-- .element: style="width: 30%; float: left; margin-right: 10px;" -->
 
     ----
 
-    ![](/theme/img/freesoftware/localisation.png) <!-- .element: style="width: 20%; float: left; margin-right: 10px;" -->
-    ![](/theme/img/freesoftware/wiki2_zps167b87a8.JPG) <!-- .element: style="width: 25%; float: left; margin-right: 10px;" -->
-    ![](/theme/img/freesoftware/swift.jpg) <!-- .element: style="width: 22%; float: left; margin-right: 10px; height: 180px" -->
-    ![](/theme/img/freesoftware/efd.jpg) <!-- .element: style="width: 22%; float: left; margin-right: 10px;" -->
+    ![](theme/img/freesoftware/localisation.png) <!-- .element: style="width: 20%; float: left; margin-right: 10px;" -->
+    ![](theme/img/freesoftware/wiki2_zps167b87a8.JPG) <!-- .element: style="width: 25%; float: left; margin-right: 10px;" -->
+    ![](theme/img/freesoftware/swift.jpg) <!-- .element: style="width: 22%; float: left; margin-right: 10px; height: 180px" -->
+    ![](theme/img/freesoftware/efd.jpg) <!-- .element: style="width: 22%; float: left; margin-right: 10px;" -->
 
-    ====
-
-    # FSFTN and Flood Relief Campaign
-
-    ====

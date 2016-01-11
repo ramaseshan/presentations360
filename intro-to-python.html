@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Introduction to Python</title>
+
+  <meta name="description" content="<p>Intro to Python Programming Language</p>">
+  <meta name="author" content="[<Author u'Ramaseshan'>]">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link href="http://voidspace.xyz/presentations360/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Presentations360 Full Atom Feed" />
+  <link href="http://voidspace.xyz/presentations360/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="Presentations360 Categories Atom Feed" />
+
+    <!-- CSS Includes -->
+    <link rel="stylesheet" href="http://voidspace.xyz/presentations360/theme/revealjs/css/reveal.css">
+    <link rel="stylesheet" href="http://voidspace.xyz/presentations360/theme/revealjs/css/theme/simple.css" id="theme">
+
+    <!-- JS includes -->
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="http://voidspace.xyz/presentations360/theme/revealjs/lib/css/zenburn.css">
+
+    <script type="text/javascript" src="http://voidspace.xyz/presentations360/theme/js/jquery.min.js"></script>
+    <script src="http://voidspace.xyz/presentations360/theme/revealjs/lib/js/head.min.js"></script>
+    <script src="http://voidspace.xyz/presentations360/theme/revealjs/js/reveal.js"></script>
+</head>		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'http://voidspace.xyz/presentations360/theme/revealjs/css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<style>
+			.reveal img {
+				width: 800;
+				height: 550;
+			}
+		</style>
+		<div class="reveal">
+			<div class="slides">
+				<!-- Slides are separated by newline + 4 = + newline, vertical slides identical but 4 - and Notes are mentioned as Note: + newline -->
+<section data-markdown data-separator="^\n====\n$" data-separator-vertical="^\n----\n$" data-notes="^\nNote:\n$">
+    ## Introduction to Python
+    
+    ----
+    
+    ## Ramaseshan
+    
+    ### DevOps and Storage Engineer
+    ### Fractalio Data Pvt Ltd
+    ### Magadi, Karnataka
+</section>				<section data-markdown data-separator="^\n====\n$" data-separator-vertical="^\n----\n$" data-notes="^\nNote:\n$">
+
+<div class="highlight"><pre><span class="n">Python</span> <span class="o">-</span> <span class="n">An</span> <span class="n">Introduction</span> <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+    <span class="o">!</span><span class="p">[</span><span class="n">Python</span> <span class="n">Logo</span><span class="p">](</span><span class="n">theme</span><span class="o">/</span><span class="n">img</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">python</span><span class="p">.</span><span class="n">png</span><span class="p">)</span>
+
+
+<span class="o">====</span>
+
+<span class="n">What</span> <span class="n">is</span> <span class="n">Python</span> <span class="o">?</span>
+
+<span class="n">Python</span> <span class="n">is</span> <span class="n">a</span> <span class="n">programming</span> <span class="n">Language</span>  <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;1&quot;</span> <span class="o">--&gt;</span>
+
+<span class="o">====</span>
+
+<span class="n">There</span> <span class="n">are</span> <span class="n">so</span> <span class="n">many</span> <span class="n">Programming</span> <span class="n">Languages</span><span class="p">.</span>
+
+<span class="n">Why</span> <span class="n">Python</span> <span class="o">?</span>
+
+<span class="o">====</span>
+
+<span class="mf">1.</span> <span class="n">Simple</span> <span class="n">and</span> <span class="n">beautiful</span>  <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;1&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">2.</span> <span class="n">Easy</span> <span class="n">to</span> <span class="n">learn</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;2&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">3.</span> <span class="n">FLOSS</span> <span class="p">(</span><span class="n">Free</span> <span class="n">Software</span><span class="p">)</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;3&quot;</span> <span class="o">--&gt;</span>
+
+<span class="o">====</span>
+
+<span class="o">**</span> <span class="n">Can</span> <span class="n">Do</span> <span class="o">**</span>
+
+<span class="o">-</span> <span class="n">Text</span> <span class="n">Handling</span>  <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;1&quot;</span> <span class="o">--&gt;</span>
+<span class="o">-</span> <span class="n">System</span> <span class="n">Administration</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;2&quot;</span> <span class="o">--&gt;</span>
+<span class="o">-</span> <span class="n">GUI</span> <span class="n">programming</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;3&quot;</span> <span class="o">--&gt;</span>
+<span class="o">-</span> <span class="n">Web</span> <span class="n">Applications</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;4&quot;</span> <span class="o">--&gt;</span>
+<span class="o">-</span> <span class="n">Database</span> <span class="n">Apps</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;5&quot;</span> <span class="o">--&gt;</span>
+<span class="o">-</span> <span class="n">Scientific</span> <span class="n">Applications</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;6&quot;</span> <span class="o">--&gt;</span>
+<span class="o">-</span> <span class="n">Games</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;7&quot;</span> <span class="o">--&gt;</span>
+<span class="o">-</span> <span class="n">NLP</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;8&quot;</span> <span class="o">--&gt;</span>
+<span class="o">-</span> <span class="p">...</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;9&quot;</span> <span class="o">--&gt;</span>
+
+<span class="o">====</span>
+
+<span class="cp">## History</span>
+
+<span class="o">====</span>
+
+<span class="o">*</span> <span class="n">Guido</span> <span class="n">van</span> <span class="n">Rossum</span>  <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;1&quot;</span> <span class="o">--&gt;</span>
+<span class="o">*</span> <span class="n">Father</span> <span class="n">of</span> <span class="n">Python</span>  <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;3&quot;</span> <span class="o">--&gt;</span>
+    <span class="o">!</span><span class="p">[</span><span class="n">Guido</span> <span class="n">Van</span> <span class="n">Rossum</span><span class="p">](</span><span class="n">theme</span><span class="o">/</span><span class="n">img</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">guido</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;2&quot;</span> <span class="o">--&gt;</span> 
+<span class="o">*</span> <span class="mi">1991</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;4&quot;</span> <span class="o">--&gt;</span>
+
+
+<span class="o">====</span>
+
+<span class="n">What</span> <span class="n">is</span> <span class="n">Python</span> <span class="o">?</span>
+
+<span class="n">A</span> <span class="n">dynamic</span><span class="p">,</span><span class="n">open</span> <span class="n">source</span> <span class="n">programming</span> <span class="n">language</span> <span class="n">with</span> <span class="n">a</span> <span class="n">focus</span> <span class="n">on</span> <span class="n">simplicity</span> <span class="n">and</span> <span class="n">productivity</span><span class="p">.</span>  <span class="n">It</span> <span class="n">has</span> <span class="n">an</span> <span class="n">elegant</span> <span class="n">syntax</span> <span class="n">that</span> <span class="n">is</span> <span class="n">natural</span> <span class="n">to</span>  <span class="n">read</span> <span class="n">and</span> <span class="n">easy</span> <span class="n">to</span> <span class="n">write</span><span class="p">.</span>
+
+<span class="o">====</span>
+
+<span class="n">Basic</span> <span class="nl">Python</span> <span class="p">:</span>
+
+<span class="mf">1.</span> <span class="n">Hello</span> <span class="n">World</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;1&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">2.</span> <span class="n">Variables</span> <span class="p">(</span><span class="n">Python</span> <span class="n">Knows</span> <span class="n">Everything</span><span class="p">)</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;2&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">3.</span> <span class="k">if</span> <span class="n">and</span> <span class="k">else</span> <span class="n">statements</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;3&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">4.</span> <span class="n">Arrays</span> <span class="p">(</span><span class="n">Lists</span><span class="p">)</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;4&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">5.</span> <span class="n">List</span> <span class="n">operations</span> <span class="p">(</span><span class="n">sort</span><span class="p">,</span><span class="n">reverse</span><span class="p">,</span> <span class="n">append</span><span class="p">,</span><span class="n">pop</span> <span class="n">etc</span><span class="p">)</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;5&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">6.</span> <span class="n">Tuples</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;6&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">7.</span> <span class="n">Tuple</span> <span class="n">operations</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;8&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">8.</span> <span class="n">Strings</span> <span class="p">(</span><span class="n">are</span> <span class="n">list</span> <span class="n">of</span> <span class="n">characters</span><span class="p">)</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;9&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">9.</span> <span class="n">String</span> <span class="n">Operations</span> <span class="p">(</span><span class="n">split</span><span class="p">,</span><span class="n">join</span><span class="p">,</span><span class="n">upper</span><span class="p">,</span><span class="n">lower</span><span class="p">,</span><span class="n">swapcase</span><span class="p">)</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;10&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">10.</span> <span class="n">Loops</span> <span class="o">/</span> <span class="n">Conditional</span> <span class="n">Statements</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;11&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">11.</span> <span class="n">Dictionary</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;12&quot;</span> <span class="o">--&gt;</span>
+
+<span class="o">====</span>
+
+<span class="n">Advanced</span> <span class="n">Python</span>
+
+<span class="mf">1.</span> <span class="n">Functions</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;1&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">2.</span> <span class="n">Modules</span> <span class="p">(</span><span class="n">Existing</span> <span class="n">and</span> <span class="n">own</span><span class="p">)</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;2&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">3.</span> <span class="kt">Class</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;3&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">4.</span> <span class="n">Files</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;4&quot;</span> <span class="o">--&gt;</span>
+
+<span class="o">====</span>
+
+<span class="n">Learning</span> <span class="n">Python</span>
+
+<span class="o">*</span> <span class="n">IPython</span> <span class="p">(</span><span class="n">Interactive</span> <span class="n">Python</span><span class="p">)</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;1&quot;</span> <span class="o">--&gt;</span>
+<span class="o">*</span> <span class="n">Think</span> <span class="n">like</span> <span class="n">a</span> <span class="n">computer</span> <span class="n">Scientist</span> <span class="n">book</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;2&quot;</span> <span class="o">--&gt;</span>
+<span class="o">*</span> <span class="nl">http</span><span class="p">:</span><span class="c1">//discuss.fsftn.org/t/getting-started-with-python/369/ &lt;!-- .element: class=&quot;fragment&quot; data-fragment-index=&quot;3&quot; --&gt;</span>
+
+<span class="o">====</span>
+
+<span class="n">Other</span> <span class="n">Pythons</span>
+
+<span class="o">-</span> <span class="n">Cython</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;1&quot;</span> <span class="o">--&gt;</span>
+<span class="o">-</span> <span class="n">Jython</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;2&quot;</span> <span class="o">--&gt;</span>
+<span class="o">-</span> <span class="n">IronPython</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;3&quot;</span> <span class="o">--&gt;</span>
+<span class="o">-</span> <span class="n">WxPython</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;4&quot;</span> <span class="o">--&gt;</span>
+<span class="o">-</span> <span class="n">GTK</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;5&quot;</span> <span class="o">--&gt;</span>
+<span class="o">-</span> <span class="n">Qt</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;6&quot;</span> <span class="o">--&gt;</span>
+
+<span class="o">====</span>
+
+<span class="n">Web</span> <span class="n">Frameworks</span>
+
+<span class="mf">1.</span> <span class="n">Django</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;1&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">2.</span> <span class="n">Flask</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;2&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">3.</span> <span class="n">Tornado</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;3&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">4.</span> <span class="n">Twisted</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;4&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">5.</span> <span class="n">Frappie</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;5&quot;</span> <span class="o">--&gt;</span>
+<span class="mf">6.</span> <span class="n">Webpy</span> <span class="o">&lt;!--</span> <span class="p">.</span><span class="nl">element</span><span class="p">:</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">index</span><span class="o">=</span><span class="s">&quot;6&quot;</span> <span class="o">--&gt;</span>
+</pre></div>
+
+				</section>
+<section data-markdown data-separator="^\n====\n$" data-separator-vertical="^\n----\n$" data-notes="^\nNote:\n$">
+    # AKA - Ask Me Anything
+   
+    ----
+ 
+    ### Reach me at
+    - null@voidspace.xyz
+    - twitter - @voidspacexyz
+    - telegram - @voidspace_xyz
+    
+    ----
+    
+    # Thank You
+</section>			</div>
+		</div>
+<script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    slideNumber: true,
+
+    theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+    transition: "concave", // default/cube/page/concave/zoom/linear/fade/none
+    /*
+    multiplex: {
+            // Example values. To generate your own, see the socket.io server instructions.
+            secret: null, // null so the clients do not have control of the master presentation
+            id: '1ea875674b17ca76', // id, obtained from socket.io server
+            url: 'revealjs.jit.su:80' // Location of socket.io server
+    },
+    */
+    // Optional libraries used to extend on reveal.js
+    dependencies: [
+      { src: 'http://voidspace.xyz/presentations360/theme/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/notes/notes.js', async: true },
+      //{ src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/menu/menu.js', async: true },
+      //{ src: '//cdn.socket.io/socket.io-1.3.5.js', async: true },
+          //{ src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/multiplex/client.js', async: true },
+      ],
+  /*menu: {
+          // Specifies which side of the presentation the menu will
+          // be shown. Use 'left' or 'right'.
+          side: 'left',
+
+          // Add slide numbers to the titles in the slide list.
+          // Use 'true' or format string (same as reveal.js slide numbers)
+          numbers: true,
+
+          // Hide slides from the menu that do not have a title.
+          // Set to 'true' to only list slides with titles.
+          hideMissingTitles: false,
+
+          // Add markers to the slide titles to indicate the
+          // progress through the presentation
+          markers: false,
+
+          // Specify custom panels to be included in the menu, by
+          // providing an array of objects with 'title', 'icon'
+          // properties, and either a 'src' or 'content' property.
+          custom: false,
+
+          // Specifies the themes that will be available in the themes
+          // menu panel. Set to 'false' to hide themes panel.
+          themes: [
+              { name: 'Black', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/black.css' },
+              { name: 'White', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/white.css' },
+              { name: 'League', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/league.css' },
+              { name: 'Sky', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/sky.css' },
+              { name: 'Beige', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/beige.css' },
+              { name: 'Simple', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/simple.css' },
+              { name: 'Serif', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/serif.css' },
+              { name: 'Blood', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/blood.css' },
+              { name: 'Night', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/night.css' },
+              { name: 'Moon', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/moon.css' },
+              { name: 'Solarized', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/solarized.css' }
+          ],
+
+          // Specifies if the transitions menu panel will be shown.
+          transitions: false,
+
+          // Adds a menu button to the slides to open the menu panel.
+          // Set to 'false' to hide the button.
+          openButton: true,
+
+          // If 'true' allows the slide number in the presentation to
+          // open the menu panel. The reveal.js slideNumber option must
+          // be displayed for this to take effect
+          openSlideNumber: false,
+
+          // If true allows the user to open and navigate the menu using
+          // the keyboard. Standard keyboard interaction with reveal
+          // will be disabled while the menu is open.
+          keyboard: true
+      },
+      */
+  });
+</script>		<!-- Custom Scripts include after this -->
+	</body>
+</html>

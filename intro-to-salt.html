@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Introduction to Salt Stack</title>
+
+  <meta name="description" content="<p>SaltStack is a configuration state management tool, for managing large scale infrasctructure.</p>">
+  <meta name="author" content="[<Author u'Ramaseshan'>]">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link href="http://voidspace.xyz/presentations360/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Presentations360 Full Atom Feed" />
+  <link href="http://voidspace.xyz/presentations360/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="Presentations360 Categories Atom Feed" />
+
+    <!-- CSS Includes -->
+    <link rel="stylesheet" href="http://voidspace.xyz/presentations360/theme/revealjs/css/reveal.css">
+    <link rel="stylesheet" href="http://voidspace.xyz/presentations360/theme/revealjs/css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- JS includes -->
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="http://voidspace.xyz/presentations360/theme/revealjs/lib/css/zenburn.css">
+
+    <script type="text/javascript" src="http://voidspace.xyz/presentations360/theme/js/jquery.min.js"></script>
+    <script src="http://voidspace.xyz/presentations360/theme/revealjs/lib/js/head.min.js"></script>
+    <script src="http://voidspace.xyz/presentations360/theme/revealjs/js/reveal.js"></script>
+</head>		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'http://voidspace.xyz/presentations360/theme/revealjs/css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<style>
+			.reveal img {
+				width: 800;
+				height: 550;
+			}
+		</style>
+		<div class="reveal">
+			<div class="slides">
+				<!-- Slides are separated by newline + 4 = + newline, vertical slides identical but 4 - and Notes are mentioned as Note: + newline -->
+<section data-markdown data-separator="^\n====\n$" data-separator-vertical="^\n----\n$" data-notes="^\nNote:\n$">
+    ## Introduction to Salt Stack
+    
+    ----
+    
+    ## Ramaseshan
+    
+    ### DevOps and Storage Engineer
+    ### Fractalio Data Pvt Ltd
+    ### Magadi, Karnataka
+</section>				<section data-markdown data-separator="^\n====\n$" data-separator-vertical="^\n----\n$" data-notes="^\nNote:\n$">
+
+<div class="highlight"><pre><span class="cp">## Our Goal</span>
+<span class="p">-</span> <span class="nf">Understand</span> <span class="n">Some</span> <span class="n">Server</span> <span class="n">Challenges</span> <span class="n">Facing</span> <span class="n">Teams</span>
+<span class="o">-</span> <span class="n">Basic</span> <span class="n">introduction</span> <span class="n">to</span> <span class="n">Salt</span> <span class="n">about</span> <span class="n">what</span> <span class="n">it</span> <span class="n">does</span>
+<span class="o">-</span> <span class="n">Live</span> <span class="n">demo</span> <span class="n">on</span> <span class="n">how</span> <span class="n">it</span> <span class="n">can</span> <span class="n">help</span> <span class="n">solve</span> <span class="n">common</span> <span class="n">problems</span>
+<span class="o">-</span> <span class="n">Get</span> <span class="n">you</span> <span class="n">excited</span> <span class="n">to</span> <span class="n">go</span> <span class="n">try</span> <span class="k">out</span> <span class="o">&amp;</span> <span class="n">learn</span> <span class="n">more</span> <span class="n">about</span> <span class="n">salt</span>
+
+<span class="o">====</span>
+
+<span class="cp">## Why do we need an &quot;Infrastructure Management Tool&quot; ?</span>
+
+<span class="o">----</span>
+
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;padding:0 0 50px 0;&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;theme/img/salt/gifs/happy-dev.gif&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="n">You</span><span class="err">&#39;</span><span class="n">re</span> <span class="n">a</span> <span class="n">Happy</span> <span class="n">Developer</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;padding:0 0 50px -30px;&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;theme/img/salt/gifs/team.gif&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="n">You</span><span class="err">&#39;</span><span class="n">re</span> <span class="n">Part</span> <span class="n">of</span> <span class="n">a</span> <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Small</span> <span class="n">Team</span> <span class="n">of</span> <span class="n">Devs</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;padding:0 0 50px 0;&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;theme/img/salt/gifs/new-website.gif&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="n">You</span> <span class="n">Have</span> <span class="n">a</span> <span class="n">New</span> <span class="n">Website</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;padding:0 0 50px 0; font-size: 80px;&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="n">On</span> <span class="n">a</span> <span class="n">small</span> <span class="n">cloud</span> <span class="n">server</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+    <span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;padding:0 0 50px 0;&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;theme/img/salt/gifs/traffic.gif&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="n">You</span> <span class="n">Start</span> <span class="n">Getting</span> <span class="n">Lots</span> <span class="n">of</span> <span class="n">Users</span> <span class="p">...</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;padding:0 0 50px 0;&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;theme/img/salt/gifs/fire.gif&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;width:490px; height:366px;&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="p">...</span> <span class="n">and</span> <span class="n">you</span> <span class="n">need</span> <span class="n">to</span> <span class="n">quickly</span> <span class="n">scale</span><span class="p">.</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+    <span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;padding:0 0 50px 0;&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;theme/img/salt/gifs/boss.gif&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;min-width:500px;&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="n">You</span> <span class="n">ask</span> <span class="n">your</span> <span class="n">boss</span> <span class="n">to</span> <span class="n">hire</span> <span class="n">a</span> <span class="n">sys</span> <span class="n">admin</span><span class="p">.</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h2</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="o">&gt;</span><span class="s">&quot;We don&#39;t have the budget!&quot;</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+    <span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;padding:0 0 50px 0;&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;theme/img/salt/gifs/who-is-devop.gif&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="n">So</span> <span class="n">your</span> <span class="n">team</span> <span class="n">decides</span> <span class="n">to</span> <span class="nl">ask</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h4</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;serif&quot;</span><span class="o">&gt;</span><span class="n">who</span> <span class="n">can</span> <span class="n">run</span> <span class="n">operations</span><span class="o">?&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;padding:0 0 50px 0; font-size: 80px;&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="p">...</span> <span class="n">and</span> <span class="n">you</span> <span class="n">start</span> <span class="n">deploying</span> <span class="n">more</span> <span class="n">servers</span> <span class="p">...</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;padding:0 0 50px 0; font-size: 80px;&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="p">...</span> <span class="n">and</span> <span class="n">some</span> <span class="n">more</span> <span class="p">...</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;padding:0 0 50px 0; font-size: 80px;&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="p">...</span> <span class="n">and</span> <span class="n">maybe</span> <span class="n">just</span> <span class="n">a</span> <span class="n">few</span> <span class="n">more</span> <span class="p">...</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+<span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">Until</span> <span class="n">it</span> <span class="n">is</span> <span class="n">a</span> <span class="n">giant</span> <span class="n">mess</span><span class="o">!&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;padding:0 0 50px 0;&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;theme/img/salt/gifs/angry-panda.gif&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;min-width:500px;&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="nl">Scenario</span><span class="p">:</span> <span class="n">John</span> <span class="n">gets</span> <span class="n">Fired</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;padding:0 0 50px 0; font-size: 80px;&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px; color:#f08080;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px; color:#f08080;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px; color:#f08080;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px; color:#f08080;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px; color:#f08080;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px; color:#f08080;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">You</span> <span class="n">have</span> <span class="n">a</span> <span class="n">dozen</span> <span class="n">servers</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="n">He</span> <span class="n">has</span> <span class="n">SSH</span> <span class="n">keys</span> <span class="n">on</span> <span class="n">half</span> <span class="n">of</span> <span class="n">them</span><span class="p">.</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;padding:0 0 50px 0; font-size: 80px;&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size:50px;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="n">How</span> <span class="n">are</span> <span class="n">you</span> <span class="n">going</span> <span class="n">to</span> <span class="n">ensure</span> <span class="n">you</span><span class="err">&#39;</span><span class="n">ve</span> <span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;&lt;</span><span class="n">h3</span><span class="o">&gt;</span> <span class="n">revoked</span> <span class="n">his</span> <span class="n">access</span> <span class="n">everywhere</span><span class="o">?&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+
+<span class="o">====</span>
+
+<span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">The</span> <span class="nl">Problem</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">Ad</span><span class="o">-</span><span class="n">Hoc</span> <span class="n">Server</span> <span class="n">Management</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+<span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-cloud&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span> <span class="n">The</span> <span class="n">Cloud</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">p</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;serif&quot;</span><span class="o">&gt;</span><span class="nl">Problem</span><span class="p">:</span> <span class="n">It</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">Easy</span><span class="o">!&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">li</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span><span class="o">&gt;</span><span class="n">Doesn</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">Require</span> <span class="n">a</span> <span class="n">Sys</span> <span class="n">Admin</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">li</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span><span class="o">&gt;</span><span class="n">Simple</span> <span class="n">to</span> <span class="n">deploy</span> <span class="n">many</span> <span class="n">servers</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">li</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span><span class="o">&gt;</span><span class="n">But</span> <span class="n">complex</span> <span class="n">to</span> <span class="n">solve</span> <span class="n">large</span> <span class="n">scaling</span> <span class="n">issues</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">li</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span><span class="o">&gt;</span><span class="n">Long</span><span class="o">-</span><span class="n">term</span> <span class="n">management</span> <span class="n">requires</span><span class="o">&lt;</span><span class="n">br</span> <span class="o">/&gt;</span> <span class="n">fore</span><span class="o">-</span><span class="n">thought</span> <span class="o">&amp;</span> <span class="n">planning</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+<span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-user&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span> <span class="n">The</span> <span class="n">Developer</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">p</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;serif&quot;</span><span class="o">&gt;</span><span class="nl">Problem</span><span class="p">:</span> <span class="n">Lack</span> <span class="n">of</span> <span class="n">Ops</span> <span class="n">Experience</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">li</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span><span class="o">&gt;</span><span class="n">Can</span> <span class="n">relatively</span> <span class="n">easily</span> <span class="n">setup</span> <span class="n">a</span> <span class="n">production</span> <span class="n">environment</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">li</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span><span class="o">&gt;</span><span class="n">Typically</span> <span class="n">doesn</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">know</span> <span class="n">how</span> <span class="n">to</span> <span class="n">manage</span> <span class="n">many</span> <span class="n">servers</span> <span class="kt">long</span><span class="o">-</span><span class="n">term</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">li</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span><span class="o">&gt;</span><span class="n">Busy</span> <span class="n">programming</span><span class="p">,</span> <span class="n">last</span> <span class="n">priority</span> <span class="n">is</span> <span class="s">&quot;sysadmin stuff&quot;</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+<span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;&lt;</span><span class="n">i</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fa fa-briefcase&quot;</span><span class="o">&gt;&lt;/</span><span class="n">i</span><span class="o">&gt;</span> <span class="n">The</span> <span class="n">Business</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">p</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;serif&quot;</span><span class="o">&gt;</span><span class="nl">Problem</span><span class="p">:</span> <span class="n">Lack</span> <span class="n">of</span> <span class="n">Money</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">li</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span><span class="o">&gt;</span><span class="n">Hard</span> <span class="n">to</span> <span class="n">justify</span> <span class="n">a</span> <span class="s">&quot;Sys Admin&quot;</span><span class="o">&lt;</span><span class="n">br</span> <span class="o">/&gt;</span><span class="n">when</span> <span class="n">devs</span> <span class="n">can</span> <span class="k">do</span> <span class="s">&quot;okay&quot;</span> <span class="n">job</span><span class="p">.</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">li</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;fragment&quot;</span><span class="o">&gt;</span><span class="n">Usually</span> <span class="n">hit</span> <span class="n">scaling</span> <span class="n">problems</span><span class="o">&lt;</span><span class="n">br</span> <span class="o">/&gt;</span> <span class="n">before</span> <span class="n">profitability</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+
+<span class="o">====</span>
+
+    <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">The</span> <span class="nl">Solution</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">Developers</span> <span class="n">need</span> <span class="n">to</span> <span class="n">think</span> <span class="n">like</span> <span class="n">Ops</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+    <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">DevOps</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">blockquote</span><span class="o">&gt;</span><span class="n">We</span><span class="err">&#39;</span><span class="n">ve</span> <span class="n">been</span> <span class="n">putting</span> <span class="n">more</span> <span class="n">dev</span> <span class="n">into</span> <span class="n">ops</span><span class="p">,</span> <span class="n">but</span> <span class="n">we</span> <span class="n">need</span> <span class="n">to</span> <span class="n">put</span> <span class="n">more</span> <span class="n">ops</span> <span class="n">into</span> <span class="n">dev</span><span class="p">.</span> <span class="n">Ops</span> <span class="n">is</span> <span class="n">a</span> <span class="n">state</span> <span class="n">of</span> <span class="n">mind</span><span class="p">.</span>
+        <span class="o">&lt;</span><span class="n">cite</span><span class="o">&gt;</span><span class="n">Theo</span> <span class="n">Schlossnagle</span> <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span> <span class="n">CEO</span><span class="p">,</span> <span class="n">OmniTI</span><span class="o">&lt;/</span><span class="n">cite</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">blockquote</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+    <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">Need</span> <span class="n">to</span> <span class="n">Apply</span> <span class="n">Best</span> <span class="n">Practices</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">For</span> <span class="n">Server</span> <span class="n">Environments</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Source</span> <span class="n">Control</span> <span class="k">for</span> <span class="n">Configuration</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Ensure</span> <span class="n">Servers</span> <span class="n">are</span> <span class="n">Configured</span> <span class="n">The</span> <span class="n">Same</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Automate</span> <span class="n">Upgrades</span><span class="p">,</span> <span class="n">Changes</span><span class="p">,</span> <span class="o">&amp;</span> <span class="n">new</span> <span class="n">Deployments</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+    <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">Introducing</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">Configuration</span> <span class="n">Management</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h4</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;serif&quot;</span><span class="o">&gt;</span><span class="n">Programmatic</span> <span class="n">Approach</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span> <span class="k">for</span> <span class="n">Configuring</span> <span class="n">Servers</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+    <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">What</span> <span class="n">Can</span> <span class="n">Configuration</span> <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Management</span> <span class="n">Do</span><span class="o">?&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Manage</span> <span class="n">Packages</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Manage</span> <span class="n">Services</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Manage</span> <span class="n">Configuration</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Manage</span> <span class="n">Files</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Manage</span> <span class="n">Users</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+    <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">Popular</span> <span class="n">Tools</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Puppet</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Chef</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Ansible</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+
+<span class="o">====</span>
+
+    <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">So</span> <span class="n">what</span> <span class="n">is</span> <span class="n">salt</span><span class="o">?&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h4</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;serif&quot;</span><span class="o">&gt;</span><span class="n">and</span> <span class="n">how</span> <span class="n">is</span> <span class="n">it</span> <span class="n">going</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;&lt;</span><span class="n">h4</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;serif&quot;</span><span class="o">&gt;</span> <span class="n">to</span> <span class="n">help</span> <span class="n">with</span> <span class="n">my</span> <span class="n">problems</span><span class="o">?&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+    <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">What</span> <span class="n">Is</span> <span class="n">Salt</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">blockquote</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;font-size: 24px;&quot;</span><span class="o">&gt;</span><span class="n">SaltStack</span> <span class="n">takes</span> <span class="n">a</span> <span class="n">new</span> <span class="n">approach</span> <span class="n">to</span> <span class="n">infrastructure</span> <span class="n">management</span> <span class="n">by</span> <span class="n">developing</span> <span class="n">software</span> <span class="n">that</span> <span class="n">is</span> <span class="n">easy</span> <span class="n">enough</span> <span class="n">to</span> <span class="n">get</span> <span class="n">running</span> <span class="k">in</span> <span class="n">minutes</span><span class="p">,</span> <span class="n">scalable</span> <span class="n">enough</span> <span class="n">to</span> <span class="n">manage</span> <span class="n">tens</span> <span class="n">of</span> <span class="n">thousands</span> <span class="n">of</span> <span class="n">servers</span><span class="p">,</span> <span class="n">and</span> <span class="n">fast</span> <span class="n">enough</span> <span class="n">to</span> <span class="n">communicate</span> <span class="n">with</span> <span class="n">them</span> <span class="k">in</span> <span class="n">seconds</span><span class="p">.</span> <span class="n">SaltStack</span> <span class="n">delivers</span> <span class="n">a</span> <span class="n">dynamic</span> <span class="n">infrastructure</span> <span class="n">communication</span> <span class="n">bus</span> <span class="n">used</span> <span class="k">for</span> <span class="n">orchestration</span><span class="p">,</span> <span class="n">remote</span> <span class="n">execution</span><span class="p">,</span> <span class="n">configuration</span> <span class="n">management</span> <span class="n">and</span> <span class="n">much</span> <span class="n">more</span><span class="p">.</span>
+        <span class="o">&lt;</span><span class="n">cite</span><span class="o">&gt;</span><span class="n">About</span> <span class="n">SaltStack</span><span class="p">,</span> <span class="n">SaltStack</span><span class="p">.</span><span class="n">org</span><span class="o">&lt;/</span><span class="n">cite</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">blockquote</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+    <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">A</span> <span class="n">Different</span> <span class="n">Approach</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Salt</span> <span class="n">is</span> <span class="n">a</span> <span class="n">simple</span> <span class="n">system</span> <span class="n">that</span> <span class="n">focuses</span> <span class="n">on</span> <span class="n">two</span> <span class="nl">things</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Scalable</span><span class="p">,</span> <span class="n">Fast</span> <span class="n">Communication</span> <span class="p">(</span><span class="n">Flow</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Quickly</span> <span class="n">get</span> <span class="n">information</span> <span class="o">/</span> <span class="n">data</span> <span class="n">from</span> <span class="n">a</span> <span class="n">server</span> <span class="p">(</span><span class="n">State</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+    <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">Salt</span> <span class="n">Basics</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Minions</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">Master</span> <span class="n">via</span> <span class="n">ZeroMQ</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Minions</span> <span class="n">authenticate</span> <span class="n">with</span> <span class="n">master</span> <span class="n">via</span> <span class="n">AES</span> <span class="p">(</span><span class="n">pub</span><span class="o">/</span><span class="n">priv</span><span class="p">)</span> <span class="n">keys</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Master</span> <span class="n">can</span> <span class="n">send</span> <span class="n">module</span> <span class="n">commands</span> <span class="n">to</span> <span class="n">minions</span> <span class="n">to</span> <span class="n">execute</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Execution</span> <span class="n">is</span> <span class="k">in</span> <span class="n">parallel</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Modules</span> <span class="n">are</span> <span class="n">just</span> <span class="n">python</span> <span class="n">modules</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+    <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">What</span> <span class="n">does</span> <span class="n">this</span> <span class="n">give</span> <span class="n">us</span><span class="o">?&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Extremely</span> <span class="n">Scalable</span> <span class="p">(</span><span class="o">~</span><span class="mi">10</span><span class="n">k</span> <span class="n">Minions</span> <span class="n">per</span> <span class="n">Server</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Great</span> <span class="n">Flexibility</span> <span class="p">(</span><span class="n">just</span> <span class="n">write</span> <span class="n">a</span> <span class="n">python</span> <span class="n">module</span> <span class="k">for</span> <span class="n">new</span> <span class="n">functionality</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Simple</span><span class="p">,</span> <span class="n">Avoids</span> <span class="n">Complexity</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Great</span> <span class="n">Building</span> <span class="n">Blocks</span> <span class="k">for</span> <span class="n">Automation</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+    <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">Built</span> <span class="n">On</span> <span class="n">Top</span> <span class="n">of</span> <span class="n">Salt</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Configuration</span> <span class="n">Management</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Remote</span> <span class="n">Execution</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">VM</span> <span class="o">/</span> <span class="n">Cloud</span> <span class="n">Management</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+    <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">New</span> <span class="o">/</span> <span class="n">Upcoming</span> <span class="n">Functionality</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Monitoring</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+    <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="mi">100</span><span class="o">%</span> <span class="n">Open</span> <span class="n">Source</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;</span><span class="n">em</span><span class="o">&gt;</span><span class="n">Everything</span><span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;</span> <span class="n">is</span> <span class="n">open</span> <span class="n">source</span><span class="o">!</span> <span class="n">Apache</span> <span class="n">License</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">No</span> <span class="s">&quot;watered-down&quot;</span> <span class="n">community</span> <span class="n">edition</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="mi">8</span><span class="n">th</span> <span class="n">Most</span> <span class="n">Unique</span> <span class="n">Contributors</span> <span class="n">on</span> <span class="n">GitHub</span> <span class="k">in</span> <span class="mi">2012</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Extremely</span> <span class="n">Open</span> <span class="o">&amp;</span> <span class="n">Friendly</span> <span class="n">Community</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+
+<span class="o">====</span>
+
+    <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Installing</span> <span class="n">Salt</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="n">Its</span> <span class="n">so</span> <span class="n">easy</span> <span class="n">even</span> <span class="n">I</span> <span class="n">can</span> <span class="k">do</span> <span class="n">it</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+    <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">Basic</span> <span class="n">Salt</span> <span class="n">Setup</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">&quot;padding:0 0 50px 0;&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="k">class</span><span class="o">=</span><span class="s">&quot;diagram&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;theme/img/salt/img/diagram-basic.png&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+<span class="cp">## Top level components</span>
+
+<span class="o">-</span> <span class="n">Master</span>
+<span class="o">-</span> <span class="n">Minion</span>
+<span class="o">-</span> <span class="n">States</span> <span class="p">(</span><span class="n">Top</span> <span class="n">File</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">Grains</span>
+<span class="o">-</span> <span class="n">Pillar</span>
+<span class="o">-</span> <span class="n">Modules</span>
+
+<span class="o">====</span>
+
+<span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">Setting</span> <span class="n">Up</span> <span class="n">The</span> <span class="n">Master</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Install</span> <span class="n">salt</span><span class="o">-</span><span class="n">master</span> <span class="n">via</span> <span class="n">Salt</span> <span class="n">Bootstrap</span><span class="p">,</span> <span class="n">Pip</span><span class="p">,</span> <span class="n">Apt</span><span class="p">,</span> <span class="n">Yum</span><span class="p">,</span> <span class="n">Source</span><span class="p">,</span> <span class="n">etc</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Edit</span> <span class="n">Configuration</span> <span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">e</span><span class="p">.</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">salt</span><span class="o">/</span><span class="n">master</span><span class="p">)</span>
+<span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+<span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">File</span> <span class="n">Roots</span>
+  <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="n">pre</span><span class="o">&gt;</span>
+    <span class="nl">file_roots</span><span class="p">:</span>
+    <span class="nl">base</span><span class="p">:</span>
+    <span class="o">-</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">salt</span>
+  <span class="o">&lt;/</span><span class="n">pre</span><span class="o">&gt;&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Pillar</span> <span class="n">Roots</span>
+    <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="n">pre</span><span class="o">&gt;</span>
+        <span class="nl">pillar_roots</span><span class="p">:</span>
+        <span class="nl">base</span><span class="p">:</span>
+        <span class="o">-</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">pillar</span>
+  <span class="o">&lt;/</span><span class="n">pre</span><span class="o">&gt;&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
+      <span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Restart</span> <span class="n">salt</span><span class="o">-</span><span class="n">master</span> <span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">e</span><span class="p">.</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">salt</span><span class="o">-</span><span class="n">master</span> <span class="n">restart</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+
+<span class="o">====</span>
+
+  <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">Setting</span> <span class="n">Up</span> <span class="n">The</span> <span class="n">Minions</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Install</span> <span class="n">salt</span><span class="o">-</span><span class="n">minion</span> <span class="n">via</span> <span class="n">Salt</span> <span class="n">Bootstrap</span><span class="p">,</span> <span class="n">Pip</span><span class="p">,</span> <span class="n">Apt</span><span class="p">,</span> <span class="n">Yum</span><span class="p">,</span> <span class="n">Source</span><span class="p">,</span> <span class="n">etc</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Set</span> <span class="n">FQDN</span> <span class="n">on</span> <span class="n">the</span> <span class="n">server</span> <span class="p">(</span><span class="n">OR</span> <span class="n">set</span> <span class="n">ID</span> <span class="n">Manually</span> <span class="k">in</span> <span class="n">Config</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Edit</span> <span class="n">Configuration</span> <span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">e</span><span class="p">.</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">salt</span><span class="o">/</span><span class="n">minion</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Restart</span> <span class="n">Minion</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+
+<span class="o">----</span>
+
+<span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Set</span> <span class="n">Master</span> <span class="n">Server</span>
+    <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="n">pre</span><span class="o">&gt;</span>
+        <span class="nl">master</span><span class="p">:</span> <span class="n">master</span><span class="p">.</span><span class="n">saltdemo</span><span class="p">.</span><span class="n">com</span>
+    <span class="o">&lt;/</span><span class="n">pre</span><span class="o">&gt;&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">Pillar</span> <span class="n">Roots</span>
+      <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="n">pre</span><span class="o">&gt;</span>
+        <span class="nl">pillar_roots</span><span class="p">:</span>
+        <span class="nl">base</span><span class="p">:</span>
+        <span class="o">-</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">pillar</span>
+      <span class="o">&lt;/</span><span class="n">pre</span><span class="o">&gt;&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+
+<span class="o">====</span>
+
+<span class="cp">## Modules :</span>
+
+<span class="n">Python</span> <span class="n">function</span> <span class="n">with</span> <span class="n">a</span> <span class="k">return</span> <span class="n">statement</span><span class="p">.</span><span class="n">Used</span> <span class="k">for</span> <span class="n">one</span> <span class="n">time</span> <span class="n">execution</span>
+<span class="o">-</span> <span class="n">Salt</span>  <span class="sc">&#39;*&#39;</span> <span class="n">test</span><span class="p">.</span><span class="n">ping</span>
+<span class="o">-</span> <span class="n">Salt</span> <span class="sc">&#39;*&#39;</span> <span class="n">cmd</span><span class="p">.</span><span class="n">run</span> <span class="err">&#39;</span><span class="n">ls</span><span class="err">&#39;</span>
+<span class="o">-</span> <span class="n">Salt</span> <span class="sc">&#39;*&#39;</span> <span class="n">disk</span><span class="p">.</span><span class="n">usage</span>
+<span class="o">-</span> <span class="n">salt</span> <span class="sc">&#39;*&#39;</span> <span class="n">pkg</span><span class="p">.</span><span class="n">install</span> <span class="n">cowsay</span>
+<span class="o">-</span> <span class="n">salt</span> <span class="sc">&#39;*&#39;</span> <span class="n">network</span><span class="p">.</span><span class="n">interfaces</span>
+<span class="o">-</span> <span class="n">salt</span> <span class="sc">&#39;*&#39;</span> <span class="n">saltutil</span><span class="p">.</span><span class="n">sync_modules</span>
+
+<span class="o">====</span>
+
+<span class="cp">## Grains</span>
+
+<span class="n">Grains</span> <span class="n">are</span> <span class="k">static</span> <span class="n">information</span> <span class="n">SaltStack</span> <span class="n">collects</span> <span class="n">about</span> <span class="n">the</span> <span class="n">underlying</span> <span class="n">managed</span> <span class="n">system</span><span class="p">.</span>
+<span class="o">-</span> <span class="n">Salt</span> <span class="sc">&#39;*&#39;</span> <span class="n">grains</span><span class="p">.</span><span class="n">ls</span>
+<span class="o">-</span> <span class="n">salt</span> <span class="o">-</span><span class="n">E</span> <span class="err">&#39;</span><span class="n">minion</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="err">&#39;</span> <span class="n">test</span><span class="p">.</span><span class="n">ping</span>
+<span class="o">-</span> <span class="n">salt</span> <span class="o">-</span><span class="n">G</span> <span class="err">&#39;</span><span class="nl">os</span><span class="p">:</span><span class="n">Ubuntu</span><span class="err">&#39;</span> <span class="n">test</span><span class="p">.</span><span class="n">ping</span>
+<span class="o">-</span> <span class="n">salt</span> <span class="o">-</span><span class="n">C</span> <span class="err">&#39;</span><span class="p">@</span><span class="nl">os</span><span class="p">:</span><span class="n">Fedora</span> <span class="n">and</span> <span class="n">minion</span><span class="o">*</span> <span class="n">or</span> <span class="n">S</span><span class="mf">@192.168.50</span><span class="p">.</span><span class="o">*</span><span class="err">&#39;</span> <span class="n">test</span><span class="p">.</span><span class="n">ping</span>
+
+<span class="o">====</span>
+
+<span class="cp">## Pillars</span>
+
+<span class="n">Static</span> <span class="n">information</span> <span class="n">stored</span> <span class="n">by</span> <span class="n">the</span> <span class="n">users</span><span class="p">.</span>
+<span class="o">-</span> <span class="n">Confidential</span> <span class="n">information</span> <span class="n">such</span> <span class="n">as</span> <span class="n">DB</span> <span class="n">username</span><span class="p">,</span> <span class="n">Password</span> <span class="n">etc</span>
+<span class="o">-</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">salt</span><span class="o">/</span><span class="n">grains</span>
+<span class="o">-</span> <span class="nl">Eg</span> <span class="p">:</span>
+  <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="n">pre</span><span class="o">&gt;</span>
+  <span class="o">-</span> <span class="n">devel</span>
+  <span class="o">-</span> <span class="n">staging</span>
+  <span class="o">&lt;/</span><span class="n">pre</span><span class="o">&gt;&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
+<span class="o">-</span> <span class="n">salt</span> <span class="sc">&#39;*&#39;</span> <span class="n">salttuil</span><span class="p">.</span><span class="n">refresh_pillar</span>
+
+<span class="o">----</span>
+
+<span class="cp">## Example</span>
+
+<span class="n">Top</span><span class="p">.</span><span class="n">sls</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;</span>
+  <span class="nl">Base</span><span class="p">:</span>
+    <span class="err">&#39;</span><span class="n">staging</span><span class="err">&#39;</span><span class="o">:</span>
+      <span class="n">staging</span><span class="p">.</span><span class="n">sls</span>
+<span class="o">&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
+
+<span class="o">====</span>
+
+<span class="cp">## States</span>
+
+<span class="o">-</span> <span class="n">A</span> <span class="n">reusable</span> <span class="n">declaration</span> <span class="n">that</span> <span class="n">configures</span> <span class="n">a</span> <span class="n">specific</span> <span class="n">part</span> <span class="n">of</span> <span class="n">a</span> <span class="n">system</span><span class="p">.</span>
+<span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="n">pre</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">salt</span><span class="o">/</span><span class="n">top</span><span class="p">.</span><span class="n">sls</span>
+<span class="nl">install_network_packages</span><span class="p">:</span>
+  <span class="n">pkg</span><span class="p">.</span><span class="nl">installed</span><span class="p">:</span>
+    <span class="o">-</span> <span class="nl">pkgs</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">rsync</span>
+      <span class="o">-</span> <span class="n">lftp</span>
+      <span class="o">-</span> <span class="n">curl</span>
+<span class="o">&lt;/</span><span class="n">pre</span><span class="o">&gt;&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
+
+<span class="o">-</span> <span class="n">salt</span> <span class="sc">&#39;*&#39;</span> <span class="n">state</span><span class="p">.</span><span class="n">highstate</span>
+
+<span class="o">----</span>
+
+<span class="cp">## Difference between modules and States</span>
+
+<span class="o">====</span>
+
+<span class="cp">## Lets see it in action.</span>
+</pre></div>
+
+				</section>
+<section data-markdown data-separator="^\n====\n$" data-separator-vertical="^\n----\n$" data-notes="^\nNote:\n$">
+    # Questions ?
+
+    ----
+
+    ### Reach me at
+    - null@voidspace.xyz
+    - twitter - @voidspacexyz
+    - telegram - @voidspacexyz
+
+    ----
+
+    # Thank You
+</section>			</div>
+		</div>
+<script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    slideNumber: true,
+
+    theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+    transition: "concave", // default/cube/page/concave/zoom/linear/fade/none
+    /*
+    multiplex: {
+            // Example values. To generate your own, see the socket.io server instructions.
+            secret: null, // null so the clients do not have control of the master presentation
+            id: '1ea875674b17ca76', // id, obtained from socket.io server
+            url: 'revealjs.jit.su:80' // Location of socket.io server
+    },
+    */
+    // Optional libraries used to extend on reveal.js
+    dependencies: [
+      { src: 'http://voidspace.xyz/presentations360/theme/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/notes/notes.js', async: true },
+      //{ src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/menu/menu.js', async: true },
+      //{ src: '//cdn.socket.io/socket.io-1.3.5.js', async: true },
+          //{ src: 'http://voidspace.xyz/presentations360/theme/revealjs/plugin/multiplex/client.js', async: true },
+      ],
+  /*menu: {
+          // Specifies which side of the presentation the menu will
+          // be shown. Use 'left' or 'right'.
+          side: 'left',
+
+          // Add slide numbers to the titles in the slide list.
+          // Use 'true' or format string (same as reveal.js slide numbers)
+          numbers: true,
+
+          // Hide slides from the menu that do not have a title.
+          // Set to 'true' to only list slides with titles.
+          hideMissingTitles: false,
+
+          // Add markers to the slide titles to indicate the
+          // progress through the presentation
+          markers: false,
+
+          // Specify custom panels to be included in the menu, by
+          // providing an array of objects with 'title', 'icon'
+          // properties, and either a 'src' or 'content' property.
+          custom: false,
+
+          // Specifies the themes that will be available in the themes
+          // menu panel. Set to 'false' to hide themes panel.
+          themes: [
+              { name: 'Black', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/black.css' },
+              { name: 'White', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/white.css' },
+              { name: 'League', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/league.css' },
+              { name: 'Sky', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/sky.css' },
+              { name: 'Beige', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/beige.css' },
+              { name: 'Simple', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/simple.css' },
+              { name: 'Serif', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/serif.css' },
+              { name: 'Blood', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/blood.css' },
+              { name: 'Night', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/night.css' },
+              { name: 'Moon', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/moon.css' },
+              { name: 'Solarized', theme: 'http://voidspace.xyz/presentations360/theme/revealjs/css/theme/solarized.css' }
+          ],
+
+          // Specifies if the transitions menu panel will be shown.
+          transitions: false,
+
+          // Adds a menu button to the slides to open the menu panel.
+          // Set to 'false' to hide the button.
+          openButton: true,
+
+          // If 'true' allows the slide number in the presentation to
+          // open the menu panel. The reveal.js slideNumber option must
+          // be displayed for this to take effect
+          openSlideNumber: false,
+
+          // If true allows the user to open and navigate the menu using
+          // the keyboard. Standard keyboard interaction with reveal
+          // will be disabled while the menu is open.
+          keyboard: true
+      },
+      */
+  });
+</script>		<!-- Custom Scripts include after this -->
+	</body>
+</html>

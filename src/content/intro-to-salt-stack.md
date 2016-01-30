@@ -20,6 +20,16 @@ Transition: concave
     - Live demo on how it can help solve common problems
     - Get you excited to go try out & learn more about salt
 
+    ----
+
+    ## Disclaimer
+
+    - Welcome to the aggravating world of Murphy's Law.
+    - Not the web guy. Mostly on systems and storage.
+    - Not in war with, Ansible or Chef or Puppet etc.
+    - SaltStack is my first configuration management tool, and never had a need to explore other frameworks.
+
+
     ====
 
     ## Why do we need an "Infrastructure Management Tool" ?

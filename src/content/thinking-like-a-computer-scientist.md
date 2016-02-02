@@ -14,7 +14,17 @@ Contact: contact
 Transition: concave
 ---
 
-	What can a Computer Sove ?
+	What does a computer do ?
+
+	====
+
+	** What does any program basically do ? **
+
+	- Input <!-- .element: class="fragment" " data-fragment-index="1" -->
+	- Output <!-- .element: class="fragment" " data-fragment-index="2" -->
+	- Control Flow <!-- .element: class="fragment" " data-fragment-index="3" -->
+	- Repetation <!-- .element: class="fragment" " data-fragment-index="4" -->
+	- Data Manipulation <!-- .element: class="fragment" " data-fragment-index="5" -->
 
 	====
 
@@ -34,17 +44,13 @@ Transition: concave
 
 	====
 
-	** What does any program basically do ? ** 
+	** A Birthday Manager **
 
-	- Input <!-- .element: class="fragment" " data-fragment-index="1" -->
-	- Output <!-- .element: class="fragment" " data-fragment-index="2" --> 
-	- Control Flow <!-- .element: class="fragment" " data-fragment-index="3" -->
-	- Repetation <!-- .element: class="fragment" " data-fragment-index="4" -->
-	- Data Manipulation <!-- .element: class="fragment" " data-fragment-index="5" -->
+	> Lets write a Birthday manager of our own.
 
 	====
 
-	** Before Coding ? ** 
+	** Before Coding ? **
 
 	- Thinking of a solution before coding. <!-- .element: class="fragment" " data-fragment-index="1" -->
 	- Logic 	<!-- .element: class="fragment" " data-fragment-index="2" -->
@@ -55,7 +61,7 @@ Transition: concave
 
 	====
 
-	** Errors and Debugging ** 
+	** Errors and Debugging **
 
 	Programming is error-prone.
 	- Syntax errors
@@ -65,12 +71,12 @@ Transition: concave
 
 	====
 
-	** Optimization ** 
+	** Optimization **
 
 	====
 
-	** Readibility / Comments ** 
-	
+	** Readibility / Comments **
+
 	a = 4 # Declaring value of a to 4  <!-- .element: class="fragment" " data-fragment-index="1" -->
 
 	car_no_of_wheels = 4 # No of wheels of a car  <!-- .element: class="fragment" " data-fragment-index="2" -->
